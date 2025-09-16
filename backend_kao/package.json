@@ -1,0 +1,16 @@
+{
+  "name": "menu-generator-backend",
+  "version": "1.0.0",
+  "description": "Backend for the menu generator app using Ollama.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.4",
+    "node-fetch": "^3.3.2"
+  }
+}
