@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นักปรุงเมนู</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="loading-overlay">
+        <img src="st,small,507x507-pad,600x600,f8f8f8.png" class="loading-spinner-image" alt="Loading...">
+    </div>
+
+    <div id="video-overlay"></div>
+    <div id="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="PPLLAA.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🍳 นักปรุงเมนู</h1>
+                <p>ใส่ส่วนผสมที่มี แล้วให้ เชฟ ช่วยสร้างสรรค์เมนูใหม่ๆ</p>
+            </div>
+            <button id="show-saved-btn" class="saved-menu-button">เมนูที่บันทึกไว้</button>
+        </header>
+
+        <main class="main-content">
+            <div id="form-section">
+                <form id="menu-form">
+                    <h2>ใส่ส่วนผสมหลักของคุณ</h2>
+                    <div class="ingredient-input-container" onclick="document.getElementById('ingredient-input').focus();">
+                        <div class="ingredient-tags" id="ingredient-tags"></div>
+                         <div class="ingredient-input-wrapper">
+                            <input type="text" id="ingredient-input" placeholder="เช่น ข้าว, ไข่">
+                            <button type="button" id="add-ingredient-btn">เพิ่ม</button>
+                        </div>
+                    </div>
+                    <div class="filters">
+                        <div>
+                            <label for="cuisine-style">สไตล์อาหาร (ไม่บังคับ)</label>
+                            <select id="cuisine-style">
+                                <option value="any">อะไรก็ได้</option>
+                                <option value="thai">อาหารไทย</option>
+                                <option value="western">อาหารตะวันตก</option>
+                                <option value="chinese">อาหารจีน</option>
+                                <option value="japanese">อาหารญี่ปุ่น</option>
+                                <option value="korean">อาหารเกาหลี</option>
+                                <option value="clean">อาหารคลีน</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cooking-method">วิธีปรุง (ไม่บังคับ)</label>
+                            <select id="cooking-method">
+                                <option value="any">อะไรก็ได้</option>
+                                <option value="stir-fried">ผัด</option>
+                                <option value="boiled">ต้ม</option>
+                                <option value="fried">ทอด</option>
+                                <option value="grilled">ย่าง</option>
+                                <option value="steamed">นึ่ง</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="action-button">สร้างเมนู! ✨</button>
+                </form>
+            </div>
+            <div class="loader" id="loader">
+                <img src="st,small,507x507-pad,600x600,f8f8f8.png" class="loading-spinner-image" alt="Loading...">
+                <p>AI กำลังปรุงเมนูสักครู่...</p>
+            </div>
+            <div id="result-section">
+                <div class="result-card">
+                    <img id="menu-image" alt="ภาพเมนูอาหาร" onerror="this.src='https://placehold.co/600x400/333/ccc?text=Image+Not+Found';">
+                    <div class="result-card-body">
+                        <h3 id="menu-name"></h3>
+                        <p id="menu-description"></p>
+                        <div class="card-actions">
+                            <button id="get-recipe-btn" class="primary">ดูสูตรอาหาร</button>
+                            <button id="save-menu-btn">บันทึกเมนู</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="try-again" class="action-button try-again-button">ลองสร้างเมนูอื่น</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="saved-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-saved-modal">&times;</span>
+            <h2>เมนูที่บันทึกไว้</h2>
+            <div id="saved-list" class="saved-list-container"></div>
+             <button id="clear-saved-btn">ล้างทั้งหมด</button>
+        </div>
+    </div>
+
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-recipe-modal">&times;</span>
+            <h2 id="recipe-title">สูตรอาหาร</h2>
+            <div id="recipe-content" class="recipe-content-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
